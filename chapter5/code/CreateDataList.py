@@ -23,7 +23,14 @@ class CreateDataList:
             else:
                 break
         father_path = father_paths[father_paths.__len__() - 1]
-
+        # 把生产的数据列表都放在自己的总类别文件夹中
+        data_list_path = "../data/%s/" % father_path
+        # 清空原来的数据
+        with open(data_list_path + "test.list", 'w') as f:
+            pass
+        with open(data_list_path + "trainer.list", 'w') as f:
+            pass
+        # 总的图像数量
         all_class_images = 0
         # 读取每个类别
         for class_dir in class_dirs:
@@ -31,14 +38,13 @@ class CreateDataList:
             class_detail_list = {}
             test_sum = 0
             trainer_sum = 0
-            # 把生产的数据列表都放在自己的总类别文件夹中
-            data_list_path = "../data/%s/" % father_path
             # 统计每个类别有多少张图片
             class_sum = 0
             # 获取类别路径
             path = data_root_path + "/" + class_dir
             # 获取所有图片
             img_paths = os.listdir(path)
+            # 开始写入数据
             for img_path in img_paths:
                 # 每张图片的路径
                 name_path = path + '/' + img_path
@@ -75,6 +81,7 @@ class CreateDataList:
         jsons = json.dumps(readjson, sort_keys=True, indent=4, separators=(',', ': '))
         with open(data_list_path + "readme.json",'w') as f:
             f.write(jsons)
+        print '生成数据列表完成！'
 
 
 if __name__ == '__main__':

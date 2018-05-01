@@ -1,0 +1,385 @@
+<html><body><table><tr><td>https://blog.csdn.net/qq_33200967/article/details/70186759</td><td>把项目上传到码云</td><td>
+
+一、为什么要使用码云而不使用GitHub？会有很多朋友这样问，原因有以下几条： 
+1. 码云是国内的品牌，都是中文，对于英语比较弱的朋友比较友好。 
+2. 不管项目私有还是公开，码云都是免费的，而GitHub在私有是收费的。 
+3. 下图是码云给出跟GitHub的对比： 
+
+二、那我们怎么去把我们的项目上传到码云呢？ 
+1. 首先我们要注册一个账号，官网http://git.oschina.net/ 
+ 
+
+
+注册完之后，登录并创建我们的项目 
+
+填写项目的资料 
+ 
+
+复制项目的URL 
+
+在本地创建项目，本人用的是Intellij IDEA 
+
+
+随便创建一个文件 
+ 
+
+
+打开我们的Git Bash，当然要先安装git，官网https://git-scm.com/downloads 
+
+切换到我们的项目路径 
+
+把码云的项目克隆到本地 
+
+
+克隆成功 
+ 
+
+
+打开克隆下来的项目，把里面的所有文件剪切，放到本地项目的根目录下 
+ 
+
+
+随便输入ls,刷新一下，可以看到项目已经被初始化了。 
+ 
+
+
+将所有文件添加到版本控制中 
+git add . 
+
+
+然后执行提交操作 
+git commit -m “这个一个测试” 
+
+同步到码云 
+git push origin master 
+
+11、 来到我们的码云，可以看到我们的项目已经上传到码云了 
+
+12、这样就大功告成了。 
+
+</td></tr><tr><td>https://blog.csdn.net/qq_18601953/article/details/78395878</td><td>使用idea上传项目到码云</td><td>
+
+首先，基本流程是这样的：       1、在码云生成SSH公钥       2、在码云创建项目
+      3、克隆项目到本地
+      4、在本地创建项目
+      5、搭建本地仓库，关联远程仓库
+      6、使用IDEA版本控制工具，提交到码云
+1、在码云生成SSH公钥
+      请自行百度2、在码云创建项目
+     3、克隆项目到本地SSH在用git创建本地仓库时会用4、在本地创建项目
+      
+直接在项目文件夹下创建本地仓库5、搭建本地仓库，关联远程仓库
+      
+第一步先设置全局配置，输入你的码云账户名和邮箱
+然后命令生成.git文件夹，生成README.md文件，并把文件添加到缓冲区
+这里就是刚才生成的git和README.md文件了，接下来创建要提交的文件这里要注意的是推送失败的原因，提交推送前必须要关联远程仓库README.md文件
+使用命令：git pull --rebase origin master
+合并管理本地仓库和远程仓库
+成功关联之后，再次提交，然后就在码云上看到刚才提交的文件了。到这里，使用git提交本地项目到码云已经成功！6、使用IDEA版本控制工具，提交到码云
+    最后，在讲一下使用IDEA托管项目到码云，请参考步骤：
+这里要注意的是，如果你已经用git在项目目录下生成了git文件夹和README.md文件的话，就不用创建本地仓库了，直接进行add操作和commit and push操作，记得一定要推送，不然只是提交到本地仓库而已。
+好了，结束。希望这个教程能帮助到有需要的童鞋
+
+</td></tr><tr><td>https://blog.csdn.net/wust_lh/article/details/68068176</td><td>将项目从码云clone到IntelliJ IDEA</td><td>
+
+1.在IDEA中配置Git。
+选择菜单“File-->Settings-->Version Control-->Git”，找到Git的安装目录下Git.exe执行文件目录（记得先安装好Git，官网下载），如图所示：
+
+然后配置Github上注册的账号：填入Github账户信息，点击“Test”按钮测试连接，若成功则会提示如下图所示成功信息：
+
+之后如果需要输入IntelliJ IDEA账户信息，按要求正确填写即可。
+2.在IDEA启动页面选择“Check out from Versiom Control”下拉列表，选择Git,如下图所示：
+
+在弹出的界面中，Git Repository URL中的URL地址在码云中复制过来即可，其他两项自己填好就行。如图所示：
+
+
+完成后点击“clone”就可将码云上的项目clone到IDEA。
+
+
+</td></tr><tr><td>https://blog.csdn.net/qq_30604453/article/details/64500379</td><td>初次推送项目至码云应该如何操作</td><td>
+
+
+
+
+</td></tr><tr><td>https://blog.csdn.net/Mastery_Nihility/article/details/53020481</td><td>上传项目到开源中国码云</td><td>
+
+首先在码云上面新建一个项目。
+在新建项目时可以不选择添加README.md文件，因为后面可以新建
+
+然后，进行如下操作：
+1.cd 切换到工程目录
+
+2.Git全局设置
+git config --globaluser.name "user.name"
+git config --global user.email "user.email" //如果已经设定过则可以跳过这步
+
+3.git init //初始化一个git 仓库
+
+4. touch README.md 
+//创建帮助文件
+
+5. 
+git add -A //添加所有文件
+
+6. 
+git commit -a -m  "注释内容” //添加注释
+
+7. git remote add origin https://git.oschina.net/username/xxx.git(你的远程仓库地址，即是码云的项目地址)     //和远程仓库进行关联
+
+8. 
+git push origin master //上传仓库到码云
+
+顺带记录一些常用的git指令：
+
+git clone url(项目仓库地址) //克隆一个远程仓库，就是在本地建立一个新的项目。
+
+git pull origin master //如果已经有一个项目，通过这条指令可以直接更新该项目
+
+提交修改的项目，步骤如下：
+
+git status 
+git add -A
+git commit -a -m "填写修改的内容"
+git push origin master
+
+补充一个可能遇到的警告：
+warning: LF will be replaced by CRLF in ......    
+The file will have its original line endings in your working directory.   
+解决方法：
+git config --global core.autocrlf false
+就可以解决了。
+原因是路径中存在 / 的符号转义问题，false就是不转换符号。
+而默认是true，相当于把路径的 / 符号进行转义，这样添加的时候就有问题
+
+
+
+</td></tr><tr><td>https://blog.csdn.net/tiweeny/article/details/78515058</td><td>Intellij Idea 码云教程</td><td>
+
+
+1.点击导航栏 VCS -> Import into Version Control -> 托管项目到码云
+
+
+
+2.输入码云帐号密码，点击login。
+
+
+
+3.勾选private，点击托管按钮。
+
+
+
+4.点击OK。
+
+
+
+5.在项目上右键 ->Git ->Commit Directory
+
+
+
+6.填写Commit Message（养成良好编码习惯），点击Commit按钮
+
+
+
+7. 如果没有定义Git的用户名，点击Commit会弹出此弹窗，输入 name和email 点击 Set and Commit即可。
+
+
+
+8.项目右键 -> Git -> Repository -> Push
+
+
+
+9.点击Push。
+
+
+
+10.登录码云查看。到此，项目上传码云成功！~
+
+
+
+注意：（private勾选后项目并未成为私有项目，需要到码云网页上进行私有设置）
+
+</td></tr><tr><td>https://blog.csdn.net/izzyliao/article/details/53074452</td><td>Eclipse项目上传码云</td><td>
+
+
+把Eclipse项目上传到码云的步骤：
+
+1、登录码云：新建项目
+
+
+2、输入项目名：
+
+
+3、空项目创建成功如下图：
+
+
+4、右键点击Eclipse的项目，选择“Team”----------------》“Share Project”
+
+
+5、将项目本身当作仓库：
+
+
+6、表示还未把项目提交到仓库中：
+
+
+7、提交：
+
+
+8、填写用户名和邮箱，选择所有，点击提交：
+
+
+9、图标改变成桶(数据库图标)，并且有一个( master）主分支，说明已经成功提交到本地。
+
+
+10、将代码上传到云端：
+Team----》Remote------》push...
+①、
+
+②、
+
+
+11、点击OK：
+
+
+12、刷新云端：
+
+
+</td></tr><tr><td>https://blog.csdn.net/jiecsdn/article/details/60141333</td><td>使用git将本地项目发布到GitHub或者码云上面流程记录</td><td>
+
+假设大家在github上或者码云上都已经注册有账号并创建了仓库：
+1、第一步 cd 项目根目录下 执行git init 将该目录用git来管理 
+2、初始化成功后可以执行 git status查看文件状态，加入你是第一次init ，文件默认都还没关联到git上
+3、使用 git add filename 命令添加 add .为添加该目录下所有未添加的文件。
+4、再执行git status 文件就都变绿色了
+
+5、git remote add origin git@github.com:xxxxgit.git 将本地git仓库与远程仓库关联起来
+6、使用git commit -m"xxxx" 将工作区的文件正式提交到git仓库，前面git add . 只是将文件加入工作区，
+ 
+7、使用git push -u origin master  将代码提交  意思是将本地仓库的代码提交到远程仓库origin的 master分支上
+如果报错请看http://cherylgood.cn/c/error__failed_to_push_some_refs_to_https_git_oschina_netosczaizaiRNWeiBo_git.php
+
+</td></tr><tr><td>https://blog.csdn.net/u010318957/article/details/72512702</td><td>idea玩转“码云”（二、项目上传码云）</td><td>
+
+1.点击导航栏 VCS -> Import into Version Control -> 托管项目到码云
+
+2.输入码云帐号密码，点击login。
+
+3.勾选private，点击托管按钮。
+
+4.点击OK。
+
+5.在项目上右键 ->Git ->Commit Directory
+
+6.填写Commit Message（养成良好编码习惯），点击Commit按钮
+
+7. 如果没有定义Git的用户名，点击Commit会弹出此弹窗，输入 name和email 点击 Set and Commit即可。
+
+8.项目右键 -> Git -> Repository -> Push
+
+9.点击Push。
+
+10.登录码云查看。到此，项目上传码云成功！~
+
+注意：（private勾选后项目并未成为私有项目，需要到码云网页上进行私有设置）
+ 
+
+</td></tr><tr><td>https://blog.csdn.net/Android_caishengyan/article/details/53655031</td><td>怎么把本地工程上传到到github、码云？</td><td>
+
+转自网络：https://zhidao.baidu.com/question/1925885591182532307.html
+注册GitHub后你就会有0.3G的免费空间，不过只能创建公开项目，这也满足代码分享的目的，我最喜欢的倒是它的代码展示方式，可以直接浏览你的代码，代码是经过高亮、添加行号处理过的，十分漂亮，体验一流，比如这个Webpy托管的地方。而作为想要了解你代码的人，可以选择直接在线浏览自己感兴趣的，也可以直接下载压缩包，或者直接使用Git
+ clone到本地。因为GitHub是基于Git版本控制系统，所以你上传修改代码什么的，都需要使用Git工具。我这里主要是用来分享和展示代码，所以不想在版本控制方面做过多的阐述，下面就简单讲解一下怎么在GitHub上新建一个项目，还有把自己的代码传上去。下面的前提是你已经注册了GitHub和下载安装了Git——Git下载、Windows版本下载。
+上传分享代码
+1.在GitHub上建立项目登录GitHub后，你可以在右边靠中那里找到一个按钮“New
+ Repository”，点击过后，填入项目名称、说明和网址过后就可以创建了，然后会出现一个提示页面，记下类似 
+git@github.com:XXX/XXX.git的地址，这个就是你这个项目的地址了。
+2.配置Git以及上传代码安装Git成功后，如果是Windows下，选择Git
+ Bash，在命令行中完成一切，可能开始有点麻烦，不过就那几条命令行，用几次就记住啦。
+首先初始设置Git：
+1
+ git config --global user.name "Your Real Name" 
+2 git config --global user.emailyou@email.address
+然后开始进行最麻烦的一步了，你需要上传文件到GitHub的Git系统上，得需要一个SSH密匙来认证，下面就开始生成密钥和提交密钥。
+打开Git Bash,创建SSH key:
+1
+ ssh-keygen -C 'your@email.address' -t rsa然后要你输入SSH密匙的存放位置，可以不管，直接回车使用默认路径。再输入你想要的密码，SSH
+ key就生成了。现在你需要将这个Key提交到GitHub，首先打开Key保存的位置，里面会有三个文件，找到id_rsa.pub，用文本编辑器打开，复制里面的全部字符。到GitHub，在右上方工具栏里找到Account Settings。在这个页面上有一个SSH Public Keys标签，选择Add another public key。Title可以随便填一个，Key就粘贴刚才的字符，提交。完成这些工作后，就可以上传自己的代码了。找到自己要分享上传的代码文件夹，右击选择Git
+ Bash，或者在Git Bash中进入这个文件夹。
+建立一个仓库：
+1
+ git init选择要添加进仓库的文件：
+1
+ git add .一般如果你想分享这个文件夹里的所有代码，就在
+ add后面加“.”，上面的例子就是这样，如果传指定的，只需要把“.”改为文件名即可，
+现在只是选择了要加入仓库的文件，下面才是添加进入仓库：
+1
+ git commit -m 'Test'-m后面跟一个参数，表示说明，将代码提交到GitHub后，将会在代码文件信息上显示这个说明，如下图标记的地方。
+搞了这么久，现在才开始把本地仓库上传到GitHub了，下面两行命令搞定问题：
+1
+ git remote add origin 
+git@github.com:XXX/XXX.git 
+2 git push (-u) origin master
+这个git@github.com:XXX/XXX.git就是上面创建项目是生成的地址。现在打开你的项目网址，你就可以发现你的代码已经展示出来了。如果你要更新代码的话，就重复上面的吧。
+如果提交了敏感信息，比如代码中设置的自己的密码什么的忘删除就上传上去了怎么办？重新修改过后上传依然有历史记录，而使用Git删除历史记录貌似很麻烦，于是就采用删除项目吧，删除了再重新上传。删除项目需要在GitHub网站上右上方找到admin按钮，进去后右边最下面有个删除的按钮，这样就可以删除了。
+一些可能遇到的问题解决：
+如果输入$
+ git remote add origin 
+git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git提示出错信息：fatal:
+ remote origin already exists.
+解决办法如下：
+1、先输入$
+ git remote rm origin
+2、再输入$
+ git remote add origin 
+git@github.com:djqiang/gitdemo.git 就不会报错了！
+3、如果输入$
+ git remote rm origin 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容
+4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc5、找到一个名为gitconfig的文件，打开它把里面的[remote
+ "origin"]那一行删掉就好了！
+如果输入$
+ ssh -T 
+git@github.com出现错误提示：Permission
+ denied (publickey).因为新生成的key不能加入ssh就会导致连接不上github。
+解决办法如下：
+1、先输入$
+ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。
+2、如果还是不行的话，输入ssh-add
+ ~/.ssh/id_key 命令后出现报错Could not open a connection to your authentication agent.解决方法是key用Git Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。
+3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。
+如果输入$
+ git push origin master提示出错信息：error:failed
+ to push som refs to …….
+解决办法如下：
+1、先输入$
+ git pull origin master //先把远程服务器github上面的文件拉下来(解决冲突)
+2、再输入$
+ git push origin master
+3、如果出现报错
+ fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.
+4、则需要重新输入$
+ git remote add 
+origingit@github.com:djqiang/gitdemo.git使用git在本地创建一个项目的过程
+$
+ makdir ~/hello-world //创建一个项目hello-world
+$
+ cd ~/hello-world //打开这个项目
+$
+ git init //初始化
+$
+ touch README
+$
+ git add README //更新README文件
+$
+ git commit -m ‘first commit’ //提交更新，并注释信息“first commit”
+$
+ git remote add origin 
+git@github.com:defnngj/hello-world.git //连接远程github项目
+$
+ git push (-u) origin master //将本地项目更新到github项目上去
+$
+ git init //初始化
+$
+ git add -all（git add .）
+
+
+
+
+</td></tr></table></body></html>

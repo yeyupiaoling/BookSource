@@ -22,7 +22,8 @@ class DownloadImages:
         while self.download_sum < self.download_max:
             str_pn = str(self.download_sum)
             url = 'http://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&' \
-                  'word=' + self.key_word + '&pn=' + str_pn + '&gsm=' + str_gsm + '&ct=&ic=0&lm=-1&width=0&height=0'
+                  'word=' + self.key_word + '&pn=' + str_pn + '&gsm=' + str_gsm + \
+                  '&ct=&ic=0&lm=-1&width=0&height=0'
             print url
             result = requests.get(url)
             self.downloadImages(result.text)
