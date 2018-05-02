@@ -130,11 +130,11 @@ class PaddleUtil:
 
 if __name__ == '__main__':
     # 类别总数
-    type_size = 3
+    type_size = 5
     # 图片大小
     imageSize = 32
     # 总的分类名称
-    all_class_name = 'vegetables'
+    all_class_name = '蔬菜'
     # 保存的model路径
     parameters_path = "../model/model.tar"
     # 数据的大小

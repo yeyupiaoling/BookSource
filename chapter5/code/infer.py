@@ -47,9 +47,9 @@ if __name__ == '__main__':
     # *******************************开始预测**************************************
     # 添加数据
     image_path = []
-    image_path.append("../images/vegetables/cuke/1515826971850.jpg")
-    image_path.append("../images/vegetables/lettuce/1515827012863.jpg")
-    image_path.append("../images/vegetables/lotus_root/1515827059200.jpg")
+    image_path.append("../images/蔬菜/丝瓜/71070c44-4dd7-11e8-8192-3c970e769528.jpg")
+    image_path.append("../images/蔬菜/南瓜/d9fcc518-4dd7-11e8-8192-3c970e769528.jpg")
+    image_path.append("../images/蔬菜/娃娃菜/45cad792-4dd5-11e8-8192-3c970e769528.jpg")
     out = vgg_bn_drop(datadim=datadim, type_size=type_size)
     parameters = get_parameters(parameters_path=parameters_path)
     all_result = to_prediction(image_paths=image_path, parameters=parameters,

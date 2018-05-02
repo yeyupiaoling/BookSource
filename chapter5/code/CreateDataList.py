@@ -7,8 +7,6 @@ class CreateDataList:
         pass
 
     def createDataList(self, data_root_path):
-        # # 把生产的数据列表都放在自己的总类别文件夹中
-        data_list_path = ''
         # 所有类别的信息
         class_detail = []
         # 获取所有类别
@@ -25,6 +23,10 @@ class CreateDataList:
         father_path = father_paths[father_paths.__len__() - 1]
         # 把生产的数据列表都放在自己的总类别文件夹中
         data_list_path = "../data/%s/" % father_path
+        # 如果不存在这个文件夹,就创建
+        isexist = os.path.exists(data_list_path)
+        if not isexist:
+            os.makedirs(data_list_path)
         # 清空原来的数据
         with open(data_list_path + "test.list", 'w') as f:
             pass
@@ -48,10 +50,6 @@ class CreateDataList:
             for img_path in img_paths:
                 # 每张图片的路径
                 name_path = path + '/' + img_path
-                # 如果不存在这个文件夹,就创建
-                isexist = os.path.exists(data_list_path)
-                if not isexist:
-                    os.makedirs(data_list_path)
                 # 每10张图片取一个做测试数据
                 if class_sum % 10 == 0:
                     test_sum += 1
@@ -86,4 +84,4 @@ class CreateDataList:
 
 if __name__ == '__main__':
     createDataList = CreateDataList()
-    createDataList.createDataList('../images/vegetables')
+    createDataList.createDataList('../images/蔬菜')

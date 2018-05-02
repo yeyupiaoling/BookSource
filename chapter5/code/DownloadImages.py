@@ -6,11 +6,11 @@ import os
 
 
 class DownloadImages:
-    def __init__(self,download_max,key_word):
+    def __init__(self, download_max, all_class, key_word):
         self.download_sum = 0
         self.download_max = download_max
         self.key_word = key_word
-        self.save_path = '../images/download/' + key_word
+        self.save_path = '../images/%s/%s' % (all_class, key_word)
 
     def start_download(self):
         self.download_sum = 0
@@ -29,7 +29,7 @@ class DownloadImages:
             self.downloadImages(result.text)
         print '下载完成'
 
-    def downloadImages(self,html):
+    def downloadImages(self, html):
         img_urls = re.findall('"objURL":"(.*?)",', html, re.S)
         print '找到关键词:' + self.key_word + '的图片，现在开始下载图片...'
         for img_url in img_urls:
@@ -48,11 +48,12 @@ class DownloadImages:
 
 
 if __name__ == '__main__':
+    all_class = raw_input   ('请输入你要下载总类别名称:')
     key_word_max = input('请输入你要下载几个类别:')
     key_words = []
     for sum in range(key_word_max):
-        key_words.append(raw_input('请输入第%s个关键字:' % str(sum+1)))
+        key_words.append(raw_input('请输入第%s个关键字:' % str(sum + 1)))
     max_sum = input('请输入每个类别下载的数量:')
     for key_word in key_words:
-        downloadImages = DownloadImages(max_sum, key_word)
+        downloadImages = DownloadImages(max_sum, all_class, key_word)
         downloadImages.start_download()
