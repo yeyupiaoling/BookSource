@@ -84,4 +84,4 @@ class CreateDataList:
 
 if __name__ == '__main__':
     createDataList = CreateDataList()
-    createDataList.createDataList('../images/蔬菜')
+    createDataList.createDataList('../images/vegetables')

@@ -36,9 +36,9 @@ def to_prediction(image_paths, parameters, out, imageSize):
 if __name__ == '__main__':
     paddle.init(use_gpu=False, trainer_count=2)
     # 类别总数
-    type_size = 3
+    type_size = 5
     # 图片大小
-    imageSize = 32
+    imageSize = 200
     # 保存的model路径
     parameters_path = "../model/model.tar"
     # 数据的大小
@@ -47,9 +47,9 @@ if __name__ == '__main__':
     # *******************************开始预测**************************************
     # 添加数据
     image_path = []
-    image_path.append("../images/蔬菜/丝瓜/71070c44-4dd7-11e8-8192-3c970e769528.jpg")
-    image_path.append("../images/蔬菜/南瓜/d9fcc518-4dd7-11e8-8192-3c970e769528.jpg")
-    image_path.append("../images/蔬菜/娃娃菜/45cad792-4dd5-11e8-8192-3c970e769528.jpg")
+    image_path.append("../images/vegetables/loofah/71070c44-4dd7-11e8-8192-3c970e769528.jpg")
+    image_path.append("../images/vegetables/pumpkin/d9fcc518-4dd7-11e8-8192-3c970e769528.jpg")
+    image_path.append("../images/vegetables/baby_cabbage/45cad792-4dd5-11e8-8192-3c970e769528.jpg")
     out = vgg_bn_drop(datadim=datadim, type_size=type_size)
     parameters = get_parameters(parameters_path=parameters_path)
     all_result = to_prediction(image_paths=image_path, parameters=parameters,

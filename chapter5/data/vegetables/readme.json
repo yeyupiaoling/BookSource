@@ -1,0 +1,37 @@
+{
+    "all_class_images": 1058,
+    "all_class_name": "vegetables",
+    "all_class_sum": 5,
+    "class_detail": [
+        {
+            "class_label": 1,
+            "class_name": "baby_cabbage",
+            "class_test_images": 22,
+            "class_trainer_images": 191
+        },
+        {
+            "class_label": 2,
+            "class_name": "loofah",
+            "class_test_images": 19,
+            "class_trainer_images": 167
+        },
+        {
+            "class_label": 3,
+            "class_name": "pumpkin",
+            "class_test_images": 23,
+            "class_trainer_images": 203
+        },
+        {
+            "class_label": 4,
+            "class_name": "snow_bean",
+            "class_test_images": 20,
+            "class_trainer_images": 172
+        },
+        {
+            "class_label": 5,
+            "class_name": "tomato",
+            "class_test_images": 25,
+            "class_trainer_images": 216
+        }
+    ]
+}
