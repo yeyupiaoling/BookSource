@@ -23,7 +23,18 @@ class CreateDataList:
             else:
                 break
         father_path = father_paths[father_paths.__len__() - 1]
-
+        # 把生产的数据列表都放在自己的总类别文件夹中
+        data_list_path = "../data/%s/" % father_path
+        # 如果不存在这个文件夹,就创建
+        isexist = os.path.exists(data_list_path)
+        if not isexist:
+            os.makedirs(data_list_path)
+        # 清空原来的数据
+        with open(data_list_path + "test.list", 'w') as f:
+            pass
+        with open(data_list_path + "trainer.list", 'w') as f:
+            pass
+        # 总的图像数量
         all_class_images = 0
         # 读取每个类别
         for class_dir in class_dirs:
@@ -31,8 +42,6 @@ class CreateDataList:
             class_detail_list = {}
             test_sum = 0
             trainer_sum = 0
-            # 把生产的数据列表都放在自己的总类别文件夹中
-            data_list_path = "../data/%s/" % father_path
             # 统计每个类别有多少张图片
             class_sum = 0
             # 获取类别路径

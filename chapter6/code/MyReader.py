@@ -9,7 +9,6 @@ class MyReader:
 
     def train_mapper(self, sample):
         img, label = sample
-        # 我这里使用的是本地的image,如果你的paddlepaddle是最新的,也可以使用padd.v2.image
         # 因为是灰度图,所以is_color=False
         img = paddle.image.load_image(img, is_color=False)
         img = paddle.image.simple_transform(img, 38, self.imageSize, True, is_color=False)
@@ -17,7 +16,6 @@ class MyReader:
 
     def test_mapper(self, sample):
         img, label = sample
-        # 我这里使用的是本地的image,如果你的paddlepaddle是最新的,也可以使用padd.v2.image
         # 因为是灰度图,所以is_color=False
         img = paddle.image.load_image(img, is_color=False)
         img = paddle.image.simple_transform(img, 38, self.imageSize, False, is_color=False)
