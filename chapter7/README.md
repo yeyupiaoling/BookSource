@@ -1,3 +1,4 @@
+# 第七章
 ## data目录介绍
 1. `test_data`是测试数据，其中包括测试图像和测试图像的列表
 2. `train_data`是训练数据，其中包括训练图像和训练图像的列表
@@ -14,6 +15,3 @@
 5. `reader.py`是读取图像成reader的程序
 6. `train.py`是训练程序
 7. `utils.py`是一些方便操作的工具类程序
-
-## 笔记
-笔记文章地址:http://blog.csdn.net/qq_33200967/article/details/79127138
