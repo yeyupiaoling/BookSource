@@ -55,7 +55,7 @@ class PaddleUtil:
 
         '''
         定义优化方法
-        learning_rate 迭代的速度
+        learning_rate 学习率
         momentum 跟前面动量优化的比例
         regularzation 正则化,防止过拟合
         '''
@@ -83,7 +83,7 @@ class PaddleUtil:
         # 获得数据
         reader = paddle.batch(reader=paddle.reader.shuffle(reader=trainer_reader,
                                                            buf_size=50000),
-                              batch_size=128)
+                              batch_size=64)
         # 保证保存模型的目录是存在的
         father_path = save_parameters_name[:save_parameters_name.rfind("/")]
         if not os.path.exists(father_path):
@@ -110,7 +110,7 @@ class PaddleUtil:
 
                 # 测试准确率
                 result = trainer.test(reader=paddle.batch(reader=test_reader,
-                                                          batch_size=128),
+                                                          batch_size=64),
                                       feeding=feeding)
                 print "\nTest with Pass %d, Classification_Error %s" % (
                 event.pass_id, result.metrics['classification_error_evaluator'])

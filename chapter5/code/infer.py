@@ -17,7 +17,10 @@ def to_prediction(image_paths, parameters, out, imageSize):
     # 获得要预测的图片
     test_data = []
     for image_path in image_paths:
-        test_data.append((paddle.image.load_and_transform(image_path, 256, imageSize, False)
+        test_data.append((paddle.image.load_and_transform(image_path,
+                                                          int(imageSize * 1.1),
+                                                          imageSize,
+                                                          False)
                           .flatten().astype('float32'),))
 
     # 获得预测结果

@@ -53,8 +53,9 @@ class TestCIFAR:
         # 使用损失函数生成参数
         parameters = self.get_parameters(cost=cost)
 
-        '''        定义优化方法
-        learning_rate 迭代的速度
+        '''        
+        定义优化方法
+        learning_rate 学习率
         momentum 跟前面动量优化的比例
         regularzation 正则化,防止过拟合
         '''
@@ -123,7 +124,7 @@ class TestCIFAR:
         feeding 说明每条数据和padd.layer.data的对应关系
         '''
         trainer.train(reader=reader,
-                      num_passes=100,
+                      num_passes=50,
                       event_handler=event_handler,
                       feeding=feeding)
 

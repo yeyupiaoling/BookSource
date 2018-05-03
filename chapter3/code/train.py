@@ -28,10 +28,9 @@ class TestMNIST:
 
         """
         定义优化方法
-        learning_rate 迭代的速度
+        learning_rate 学习率
         momentum 跟前面动量优化的比例
         regularzation 正则化,防止过拟合
-        :leng re
         """
         optimizer = paddle.optimizer.Momentum(learning_rate=0.1 / 128.0,
                                               momentum=0.9,
@@ -84,7 +83,7 @@ class TestMNIST:
         event_handler 训练的事件,比如在训练的时候要做一些什么事情
         '''
         trainer.train(reader=reader,
-                      num_passes=100,
+                      num_passes=50,
                       event_handler=event_handler)
 
 
