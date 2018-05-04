@@ -51,7 +51,7 @@ class DataGenerator(object):
         :param path: 图像数据的路径
         :type path: str
         '''
-        image = paddle.image.load_image(path)
+        image = paddle.image.load_image(path,is_color=False)
         # 把图像灰度化
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
