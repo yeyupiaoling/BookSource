@@ -7,20 +7,6 @@ class MyReader:
     def __init__(self, imageSize):
         self.imageSize = imageSize
 
-    def train_mapper(self, sample):
-        img, label = sample
-        # 因为是灰度图,所以is_color=False
-        img = paddle.image.load_image(img, is_color=False)
-        img = paddle.image.simple_transform(img, 38, self.imageSize, True, is_color=False)
-        return img.flatten().astype('float32'), label
-
-    def test_mapper(self, sample):
-        img, label = sample
-        # 因为是灰度图,所以is_color=False
-        img = paddle.image.load_image(img, is_color=False)
-        img = paddle.image.simple_transform(img, 38, self.imageSize, False, is_color=False)
-        return img.flatten().astype('float32'), label
-
     def train_reader(self, train_list, buffered_size=1024):
         def reader():
             with open(train_list, 'r') as f:
@@ -32,6 +18,14 @@ class MyReader:
         return paddle.reader.xmap_readers(self.train_mapper, reader,
                                           cpu_count(), buffered_size)
 
+    def train_mapper(self, sample):
+        img, label = sample
+        # 因为是灰度图,所以is_color=False
+        img = paddle.image.load_image(img, is_color=False)
+        img = paddle.image.simple_transform(img, int(self.imageSize * 1.1),
+                                            self.imageSize, True, is_color=False)
+        return img.flatten().astype('float32'), label
+
     def test_reader(self, test_list, buffered_size=1024):
         def reader():
             with open(test_list, 'r') as f:
@@ -42,3 +36,11 @@ class MyReader:
 
         return paddle.reader.xmap_readers(self.test_mapper, reader,
                                           cpu_count(), buffered_size)
+
+    def test_mapper(self, sample):
+        img, label = sample
+        # 因为是灰度图,所以is_color=False
+        img = paddle.image.load_image(img, is_color=False)
+        img = paddle.image.simple_transform(img, int(self.imageSize * 1.1),
+                                            self.imageSize, False, is_color=False)
+        return img.flatten().astype('float32'), label

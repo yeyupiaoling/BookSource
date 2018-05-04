@@ -6,9 +6,6 @@ from PIL import Image
 
 
 class YanZhenMaUtil():
-    def __init__(self):
-        pass
-
     def splitimage(self,src, dstpath):
         # 分割路径,并获得文件名
         name = src.split('/')
@@ -37,10 +34,14 @@ class YanZhenMaUtil():
         if not os.path.exists(path4):
             os.makedirs(path4)
         # 裁剪图片并保存
-        img.crop(box1).resize((36, 36), Image.ANTIALIAS).convert('L').save(path1 + '/%s.png' % uuid.uuid1())
-        img.crop(box2).resize((36, 36), Image.ANTIALIAS).convert('L').save(path2 + '/%s.png' % uuid.uuid1())
-        img.crop(box3).resize((36, 36), Image.ANTIALIAS).convert('L').save(path3 + '/%s.png' % uuid.uuid1())
-        img.crop(box4).resize((36, 36), Image.ANTIALIAS).convert('L').save(path4 + '/%s.png' % uuid.uuid1())
+        img.crop(box1).resize((36, 36), Image.ANTIALIAS)\
+            .convert('L').save(path1 + '/%s.png' % uuid.uuid1())
+        img.crop(box2).resize((36, 36), Image.ANTIALIAS)\
+            .convert('L').save(path2 + '/%s.png' % uuid.uuid1())
+        img.crop(box3).resize((36, 36), Image.ANTIALIAS)\
+            .convert('L').save(path3 + '/%s.png' % uuid.uuid1())
+        img.crop(box4).resize((36, 36), Image.ANTIALIAS)\
+            .convert('L').save(path4 + '/%s.png' % uuid.uuid1())
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 # coding:utf-8
 import json
-
+import os
 import numpy as np
 import paddle.v2 as paddle
 from PIL import Image
@@ -25,18 +25,37 @@ def get_TestData(path, imageSize):
     box3 = (29, 0, 41, 27)
     box4 = (41, 0, 53, 27)
     temp = '../images/temp'
-    img.crop(box1).resize((32, 32), Image.ANTIALIAS).save(temp + '/1.png')
-    img.crop(box2).resize((32, 32), Image.ANTIALIAS).save(temp + '/2.png')
-    img.crop(box3).resize((32, 32), Image.ANTIALIAS).save(temp + '/3.png')
-    img.crop(box4).resize((32, 32), Image.ANTIALIAS).save(temp + '/4.png')
+    # 创建保存的文件夹
+    if not os.path.exists(temp):
+        os.makedirs(temp)
+    img.crop(box1).convert('L').save(temp + '/1.png')
+    img.crop(box2).convert('L').save(temp + '/2.png')
+    img.crop(box3).convert('L').save(temp + '/3.png')
+    img.crop(box4).convert('L').save(temp + '/4.png')
     # 把图像加载到预测数据中
-    test_data.append((paddle.image.load_and_transform(temp + '/1.png', 38, imageSize, False, is_color=False)
+    test_data.append((paddle.image.load_and_transform(temp + '/1.png',
+                                                      int(imageSize * 1.1),
+                                                      imageSize,
+                                                      False,
+                                                      is_color=False)
                       .flatten().astype('float32'),))
-    test_data.append((paddle.image.load_and_transform(temp + '/2.png', 38, imageSize, False, is_color=False)
+    test_data.append((paddle.image.load_and_transform(temp + '/2.png',
+                                                      int(imageSize * 1.1),
+                                                      imageSize,
+                                                      False,
+                                                      is_color=False)
                       .flatten().astype('float32'),))
-    test_data.append((paddle.image.load_and_transform(temp + '/3.png', 38, imageSize, False, is_color=False)
+    test_data.append((paddle.image.load_and_transform(temp + '/3.png',
+                                                      int(imageSize * 1.1),
+                                                      imageSize,
+                                                      False,
+                                                      is_color=False)
                       .flatten().astype('float32'),))
-    test_data.append((paddle.image.load_and_transform(temp + '/4.png', 38, imageSize, False, is_color=False)
+    test_data.append((paddle.image.load_and_transform(temp + '/4.png',
+                                                      int(imageSize * 1.1),
+                                                      imageSize,
+                                                      False,
+                                                      is_color=False)
                       .flatten().astype('float32'),))
     return test_data
 
