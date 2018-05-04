@@ -1,8 +1,6 @@
 # coding=utf-8
-import os
 import cv2
-
-from paddle.v2.image import load_image
+import paddle.v2 as paddle
 
 
 class DataGenerator(object):
@@ -14,6 +12,7 @@ class DataGenerator(object):
         :type image_shape: tuple
         '''
         self.image_shape = image_shape
+        print self.image_shape
         self.char_dict = char_dict
 
     def train_reader(self, file_list):
@@ -25,7 +24,9 @@ class DataGenerator(object):
         def reader():
             UNK_ID = self.char_dict['<unk>']
             for image_path, label in file_list:
+                # print '这里3：', label
                 label = [self.char_dict.get(c, UNK_ID) for c in label]
+                # print '这里4：', label
                 yield self.load_image(image_path), label
 
         return reader
@@ -50,13 +51,13 @@ class DataGenerator(object):
         :param path: 图像数据的路径
         :type path: str
         '''
-        image = load_image(path)
+        image = paddle.image.load_image(path)
+        # 把图像灰度化
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         # 将所有图像调整为固定形状
         if self.image_shape:
             image = cv2.resize(
                 image, self.image_shape, interpolation=cv2.INTER_CUBIC)
-
         image = image.flatten() / 255.
         return image

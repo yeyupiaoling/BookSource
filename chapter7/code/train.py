@@ -24,6 +24,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path,model_save_
         build_label_dict(train_file_list, label_dict_path)
     # 获取标签字典
     char_dict = load_dict(label_dict_path)
+    print '这里1：',char_dict
     # 获取字典大小
     dict_size = len(char_dict)
     # 获取reader

@@ -17,6 +17,7 @@ def get_file_list(image_file_list):
             filename = line_split[0].strip()
             path = os.path.join(dirname, filename)
             label = line_split[1][2:-1].strip()
+            # print '这里2：', label
             if label:
                 path_list.append((path, label))
 
