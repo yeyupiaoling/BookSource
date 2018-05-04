@@ -10,7 +10,7 @@ class TrainerConfig(object):
     trainer_count = 1
 
     # batch的大小
-    batch_size = 100
+    batch_size = 64
 
     # 训练的轮数
     num_passes = 1000
