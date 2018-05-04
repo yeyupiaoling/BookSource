@@ -53,7 +53,7 @@ class DataGenerator(object):
         '''
         image = paddle.image.load_image(path,is_color=False)
         # 把图像灰度化
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        # image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         # 将所有图像调整为固定形状
         if self.image_shape:
