@@ -4,10 +4,10 @@ __all__ = ["TrainerConfig", "ModelConfig"]
 
 class TrainerConfig(object):
     # 是否使用GPU
-    use_gpu = False
+    use_gpu = True
 
     # 使用线程数量
-    trainer_count = 2
+    trainer_count = 1
 
     # batch的大小
     batch_size = 100
