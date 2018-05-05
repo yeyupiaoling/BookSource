@@ -19,7 +19,7 @@ class TrainerConfig(object):
     momentum = 0
 
     # 图像的大小
-    image_shape = (100, 32)
+    image_shape = (173, 46)
 
     # 数据读取器的缓冲区大小。
     buf_size = 1000
