@@ -9,7 +9,7 @@ from reader import DataGenerator
 from utils import get_file_list, build_label_dict, load_dict
 
 
-def train(train_file_list_path, test_file_list_path, label_dict_path,model_save_dir):
+def train(train_file_list_path, test_file_list_path, label_dict_path, model_save_dir):
     # 检查保存model的路径是否存在，如果不存在就创建
     if not os.path.exists(model_save_dir):
         os.mkdir(model_save_dir)
@@ -24,7 +24,6 @@ def train(train_file_list_path, test_file_list_path, label_dict_path,model_save_
         build_label_dict(train_file_list, label_dict_path)
     # 获取标签字典
     char_dict = load_dict(label_dict_path)
-    print '这里1：',char_dict
     # 获取字典大小
     dict_size = len(char_dict)
     # 获取reader
@@ -33,7 +32,13 @@ def train(train_file_list_path, test_file_list_path, label_dict_path,model_save_
     # 初始化PaddlePaddle
     paddle.init(use_gpu=conf.use_gpu, trainer_count=conf.trainer_count)
     # 创建训练参数
-    optimizer = paddle.optimizer.Momentum(momentum=conf.momentum)
+    optimizer = paddle.optimizer.Momentum(
+        momentum=0.9,
+        regularization=paddle.optimizer.L2Regularization(rate=0.0005 * 128),
+        learning_rate=0.001 / 128,
+        learning_rate_decay_a=0.1,
+        learning_rate_decay_b=128000 * 35,
+        learning_rate_schedule="discexp", )
     # 定义网络拓扑
     model = Model(dict_size, conf.image_shape, is_infer=False)
     # 创建训练参数
@@ -50,9 +55,9 @@ def train(train_file_list_path, test_file_list_path, label_dict_path,model_save_
     def event_handler(event):
         if isinstance(event, paddle.event.EndIteration):
             if event.batch_id % conf.log_period == 0:
-                print("Pass %d, batch %d, Samples %d, Cost %f, Eval %s" %
+                print("Pass %d, batch %d, Samples %d, Cost %f" %
                       (event.pass_id, event.batch_id, event.batch_id *
-                       conf.batch_size, event.cost, event.metrics))
+                       conf.batch_size, event.cost))
 
         if isinstance(event, paddle.event.EndPass):
             # 这里由于训练和测试数据共享相同的格式
@@ -62,8 +67,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path,model_save_
                     data_generator.train_reader(test_file_list),
                     batch_size=conf.batch_size),
                 feeding=feeding)
-            print("Test %d, Cost %f, Eval %s" %
-                  (event.pass_id, result.cost, result.metrics))
+            print("Test %d, Cost %f" % (event.pass_id, result.cost))
             with gzip.open(
                     os.path.join(model_save_dir, "params_pass.tar.gz"), "w") as f:
                 trainer.save_parameter_to_tar(f)

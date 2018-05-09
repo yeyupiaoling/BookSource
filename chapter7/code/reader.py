@@ -12,7 +12,6 @@ class DataGenerator(object):
         :type image_shape: tuple
         '''
         self.image_shape = image_shape
-        print self.image_shape
         self.char_dict = char_dict
 
     def train_reader(self, file_list):
@@ -24,9 +23,7 @@ class DataGenerator(object):
         def reader():
             UNK_ID = self.char_dict['<unk>']
             for image_path, label in file_list:
-                # print '这里3：', label
                 label = [self.char_dict.get(c, UNK_ID) for c in label]
-                # print '这里4：', label
                 yield self.load_image(image_path), label
 
         return reader

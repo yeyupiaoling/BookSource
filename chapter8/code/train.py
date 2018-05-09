@@ -35,7 +35,13 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
     # 初始化PaddlePaddle
     paddle.init(use_gpu=True, trainer_count=1)
     # 创建优化方法
-    optimizer = paddle.optimizer.Momentum(momentum=0)
+    optimizer = paddle.optimizer.Momentum(
+        momentum=0.9,
+        regularization=paddle.optimizer.L2Regularization(rate=0.0005 * 128),
+        learning_rate=0.001 / 128,
+        learning_rate_decay_a=0.1,
+        learning_rate_decay_b=128000 * 35,
+        learning_rate_schedule="discexp", )
     # 创建训练参数
     params = paddle.parameters.create(model.cost)
     # 定义训练器
@@ -53,9 +59,9 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
     def event_handler(event):
         if isinstance(event, paddle.event.EndIteration):
             if event.batch_id % 100 == 0:
-                print("Pass %d, batch %d, Samples %d, Cost %f, Eval %s" %
+                print("Pass %d, batch %d, Samples %d, Cost %f" %
                       (event.pass_id, event.batch_id, event.batch_id *
-                       BATCH_SIZE, event.cost, event.metrics))
+                       BATCH_SIZE, event.cost))
 
         if isinstance(event, paddle.event.EndPass):
             # 这里由于训练和测试数据共享相同的格式
@@ -64,7 +70,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
                 my_reader.train_reader(test_file_list),
                 batch_size=BATCH_SIZE)
             result = trainer.test(reader=test_reader, feeding=feeding)
-            print("Test %d, Cost %f, Eval %s" % (event.pass_id, result.cost, result.metrics))
+            print("Test %d, Cost %f" % (event.pass_id, result.cost))
             # 检查保存model的路径是否存在，如果不存在就创建
             if not os.path.exists(model_save_dir):
                 os.mkdir(model_save_dir)

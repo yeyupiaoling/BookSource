@@ -6,7 +6,6 @@ from paddle.v2.activation import Relu, Linear
 from paddle.v2.networks import img_conv_group, simple_gru
 from config import ModelConfig as conf
 
-
 class Model(object):
     def __init__(self, num_classes, shape, is_infer=False):
         '''
