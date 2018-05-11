@@ -58,9 +58,9 @@ class Model(object):
 
         conv1 = conv_block(self.image, 16, 2, [0.3, 0], 1)
         conv2 = conv_block(conv1, 32, 2, [0.4, 0])
-        conv3 = conv_block(conv2, 64, 3, [0.4, 0.4, 0])
-        conv4 = conv_block(conv3, 128, 3, [0.4, 0.4, 0])
-        conv_features = conv_block(conv4, 128, 3, [0.4, 0.4, 0])
+        conv3 = conv_block(conv2, 64, 2, [0.4, 0.4, 0])
+        conv4 = conv_block(conv3, 128, 2, [0.4, 0.4, 0])
+        conv_features = conv_block(conv4, 128, 2, [0.4, 0.4, 0])
 
         # 将CNN的输出展开成一系列特征向量。
         sliced_feature = paddle.layer.block_expand(
