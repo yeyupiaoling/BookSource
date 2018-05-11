@@ -35,13 +35,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
     # 初始化PaddlePaddle
     paddle.init(use_gpu=True, trainer_count=1)
     # 创建优化方法
-    optimizer = paddle.optimizer.Momentum(
-        momentum=0.9,
-        regularization=paddle.optimizer.L2Regularization(rate=0.0005 * 128),
-        learning_rate=0.001 / 128,
-        learning_rate_decay_a=0.1,
-        learning_rate_decay_b=128000 * 35,
-        learning_rate_schedule="discexp", )
+    optimizer = paddle.optimizer.Momentum(momentum=0)
     # 创建训练参数
     params = paddle.parameters.create(model.cost)
     # 定义训练器
@@ -88,7 +82,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
     trainer.train(reader=train_reader,
                   feeding=feeding,
                   event_handler=event_handler,
-                  num_passes=1000)
+                  num_passes=100)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ import gzip
 import os
 
 import paddle.v2 as paddle
-from network_conf import Model
+from network_vgg import Model
 from reader import Reader
 from utils import get_file_list, build_label_dict, load_dict
 

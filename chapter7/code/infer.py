@@ -47,12 +47,12 @@ def infer(model_path, image_shape, label_dict_path,infer_file_list_path):
     # 获取预测器
     inferer = paddle.inference.Inference(output_layer=model.log_probs, parameters=parameters)
     # 开始预测
+    test_batch = []
+    labels = []
     for i, (image, label) in enumerate(data_generator.infer_reader(infer_file_list)()):
-        test_batch = []
-        labels = []
         test_batch.append([image])
         labels.append(label)
-        infer_batch(inferer, test_batch, labels, reversed_char_dict)
+    infer_batch(inferer, test_batch, labels, reversed_char_dict)
 
 
 if __name__ == "__main__":

@@ -31,7 +31,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
         char_dict=char_dict, image_shape=conf.image_shape)
     # 初始化PaddlePaddle
     paddle.init(use_gpu=conf.use_gpu, trainer_count=conf.trainer_count)
-    # 创建训练参数
+    # 创建优化方法
     optimizer = paddle.optimizer.Momentum(
         momentum=0.9,
         regularization=paddle.optimizer.L2Regularization(rate=0.0005 * 128),
