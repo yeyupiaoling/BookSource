@@ -38,7 +38,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
     optimizer = paddle.optimizer.Momentum(
         momentum=0.9,
         regularization=paddle.optimizer.L2Regularization(rate=0.0005 * 128),
-        learning_rate=0.001 / 128,
+        learning_rate=0.00001 / 128,
         learning_rate_decay_a=0.1,
         learning_rate_decay_b=128000 * 35,
         learning_rate_schedule="discexp", )
