@@ -56,11 +56,11 @@ class Model(object):
                 conv_batchnorm_drop_rate=dropouts,
                 pool_type=paddle.pooling.Max())
 
-        conv1 = conv_block(self.image, 64, 2, [0.3, 0], 1)
-        conv2 = conv_block(conv1, 128, 2, [0.4, 0])
-        conv3 = conv_block(conv2, 256, 3, [0.4, 0.4, 0])
-        conv4 = conv_block(conv3, 512, 3, [0.4, 0.4, 0])
-        conv_features = conv_block(conv4, 512, 3, [0.4, 0.4, 0])
+        conv1 = conv_block(self.image, 16, 2, [0.3, 0], 1)
+        conv2 = conv_block(conv1, 32, 2, [0.4, 0])
+        conv3 = conv_block(conv2, 64, 3, [0.4, 0.4, 0])
+        conv4 = conv_block(conv3, 128, 3, [0.4, 0.4, 0])
+        conv_features = conv_block(conv4, 128, 3, [0.4, 0.4, 0])
 
         # 将CNN的输出展开成一系列特征向量。
         sliced_feature = paddle.layer.block_expand(
@@ -73,10 +73,10 @@ class Model(object):
 
         # 使用RNN向前和向后捕获序列信息。
         gru_forward = paddle.networks.simple_gru(
-            input=sliced_feature, size=512, act=paddle.activation.Relu())
+            input=sliced_feature, size=128, act=paddle.activation.Relu())
         gru_backward = paddle.networks.simple_gru(
             input=sliced_feature,
-            size=512,
+            size=128,
             act=paddle.activation.Relu(),
             reverse=True)
 
