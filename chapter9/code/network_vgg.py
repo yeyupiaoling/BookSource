@@ -52,7 +52,7 @@ class Model(object):
                 conv_num_filter=[num_filter] * groups,
                 conv_filter_size=3,
                 conv_act=paddle.activation.Relu(),
-                conv_with_batchnorm=True,
+                conv_with_batchnorm=False,
                 conv_batchnorm_drop_rate=dropouts,
                 pool_type=paddle.pooling.Max())
 
