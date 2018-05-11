@@ -65,7 +65,7 @@ class Model(object):
         # 将CNN的输出展开成一系列特征向量。
         sliced_feature = paddle.layer.block_expand(
             input=conv_features,
-            num_channels=128,
+            num_channels=512,
             stride_x=1,
             stride_y=1,
             block_x=1,
@@ -73,10 +73,10 @@ class Model(object):
 
         # 使用RNN向前和向后捕获序列信息。
         gru_forward = paddle.networks.simple_gru(
-            input=sliced_feature, size=128, act=paddle.activation.Relu())
+            input=sliced_feature, size=512, act=paddle.activation.Relu())
         gru_backward = paddle.networks.simple_gru(
             input=sliced_feature,
-            size=128,
+            size=512,
             act=paddle.activation.Relu(),
             reverse=True)
 
