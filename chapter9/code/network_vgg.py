@@ -65,7 +65,7 @@ class Model(object):
         # 将CNN的输出展开成一系列特征向量。
         sliced_feature = paddle.layer.block_expand(
             input=conv_features,
-            num_channels=512,
+            num_channels=128,
             stride_x=1,
             stride_y=1,
             block_x=1,
