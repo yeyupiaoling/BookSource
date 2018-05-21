@@ -23,7 +23,7 @@ def load_image(img_path):
     return im
 
 data = []
-data.append((load_image('./data/infer_3.png'),))
+data.append((load_image('../images/infer_3.png'),))
 
 result = paddle.infer(output_layer=out,
                       parameters=params,

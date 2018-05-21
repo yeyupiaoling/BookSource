@@ -125,7 +125,7 @@ def infer(eval_file_list, save_path, data_args, batch_size, model_path,threshold
 
 
 if __name__ == "__main__":
-    paddle.init(use_gpu=True, trainer_count=2)
+    paddle.init(use_gpu=True, trainer_count=1)
     # 设置数据参数
     data_args = data_provider.Settings(
         data_dir='../images',

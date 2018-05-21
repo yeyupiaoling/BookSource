@@ -88,7 +88,7 @@ def train(train_file_list_path, test_file_list_path, label_dict_path, model_save
     trainer.train(reader=train_reader,
                   feeding=feeding,
                   event_handler=event_handler,
-                  num_passes=5000)
+                  num_passes=1000)
 
 
 if __name__ == "__main__":
