@@ -1,3 +1,4 @@
+# 第九章
 ## data目录介绍
 1. `data_temp`是用于临时存放原始验证码的，等待灰度化和分配给训练和测试
 2. `data_temp2`是没有裁剪的图像，可以尝试没裁剪就训练和预测
@@ -27,6 +28,3 @@
 8. `utils.py`是一些方便操作的工具类程序
 9. `CutPlateNumber.py`是在一个大的照片中裁剪车牌出来的程序
 10. `DownloadImages.py`是下载车牌的一个程序
-
-## 笔记
-笔记文章地址:http://blog.csdn.net/qq_33200967/article/details/79095335

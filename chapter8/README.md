@@ -1,3 +1,4 @@
+# 第八章
 ## data目录介绍
 1. `data_temp`是用于临时存放原始验证码的，等待灰度化和分配给训练和测试
 2. `test_data`是测试数据，其中包括测试图像和测试图像的列表
@@ -19,6 +20,3 @@
 6. `reader.py`是读取图像成reader的程序
 7. `train.py`是训练程序
 8. `utils.py`是一些方便操作的工具类程序
-
-## 笔记
-笔记文章地址:http://blog.csdn.net/qq_33200967/article/details/79233565

@@ -1,3 +1,4 @@
+# 第十章
 ## data目录介绍
 1. `VOCdevkit`是VOC数据集，包括2007和2012全部数据
 2. `label_list`是所有类别的文件
@@ -24,6 +25,3 @@
 6. `show_infer_image.py`是在预测图像上画出预测的框程序
 7. `train.py`是训练的程序
 8. `vgg_ssd_net.py`是VGG神经网络和SSD神经网络
-
-## 笔记
-笔记文章地址:http://blog.csdn.net/qq_33200967/article/details/79126780

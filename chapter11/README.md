@@ -1,3 +1,4 @@
+# 第十一章
 ## data目录介绍
 1. `plate_number`是车牌数据集和标注文件
 2. `label_list`是所有类别的文件
@@ -26,6 +27,3 @@
 8. `vgg_ssd_net.py`是VGG神经网络和SSD神经网络
 9. `DownloadImages.py`是下载车牌的程序
 10. `rename_images.py`是重命名图像的程序
-
-## 笔记
-笔记文章地址:http://blog.csdn.net/qq_33200967/article/details/79126830
