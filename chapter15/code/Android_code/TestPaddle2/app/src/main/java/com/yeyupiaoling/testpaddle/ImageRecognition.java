@@ -61,13 +61,6 @@ public class ImageRecognition {
         int channel = 3;
         //把图像生成一个数组
         byte[] pixels = getPixelsBGR(mBitmap);
-//        mBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-//        byte[] pixels = baos.toByteArray();
-//        //把图像生成一个数组
-//        int[] pixels = new int[channel * height * width];
-//        // 把图像像素填充数组
-//        mBitmap.getPixels(pixels, 0, width, 0, 0, width, height);
-//        Log.i("datas大小为", String.valueOf(pixels.length));
         // 获取预测结果
         float[] result = infer(pixels, width, height, channel);
         // 把概率最大的结果提取出来
