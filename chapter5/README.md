@@ -13,3 +13,8 @@
 5. `MyReader.py`为读取图像列表成reader的程序
 6. `vgg.py`为VGG升级网络的定义
 7. `pa_chong`为包含爬虫的程序
+
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.11.0

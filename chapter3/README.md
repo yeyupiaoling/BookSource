@@ -8,3 +8,8 @@
 1. `cnn.py`为LeNet-5神经网络的定义
 2. `infer.py`为预测数据的程序
 3. `train.py`为训练模型的的程序
+
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.11.0

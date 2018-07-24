@@ -16,3 +16,8 @@
 8. `cnn.py`为LeNet-5神经网络的定义
 
 
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.11.0
+

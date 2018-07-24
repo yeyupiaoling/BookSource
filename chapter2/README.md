@@ -4,3 +4,7 @@
 
 ## 代码介绍
 1. `housing.py`为安装成功PaddlePaddle后,用于测试的官方实例
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.11.0

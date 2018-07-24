@@ -25,3 +25,8 @@
 6. `show_infer_image.py`是在预测图像上画出预测的框程序
 7. `train.py`是训练的程序
 8. `vgg_ssd_net.py`是VGG神经网络和SSD神经网络
+
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.11.0 (GPU版本)

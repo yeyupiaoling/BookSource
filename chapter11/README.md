@@ -27,3 +27,8 @@
 8. `vgg_ssd_net.py`是VGG神经网络和SSD神经网络
 9. `DownloadImages.py`是下载车牌的程序
 10. `rename_images.py`是重命名图像的程序
+
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.11.0 (GPU版本)

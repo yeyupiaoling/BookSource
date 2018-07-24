@@ -10,3 +10,9 @@
 3. `merge_model.py`为合并模型程序
 4. `train.py`为训练程序
 5. `vgg.py`为VGG16神经网络模型程序
+
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.11.0
+3. Android 5.0

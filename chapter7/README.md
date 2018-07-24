@@ -15,3 +15,8 @@
 5. `reader.py`是读取图像成reader的程序
 6. `train.py`是训练程序
 7. `utils.py`是一些方便操作的工具类程序
+
+
+## 测试环境
+1. Python 2.7
+2. PaddlePaddle 0.10.0 (GPU版本)
