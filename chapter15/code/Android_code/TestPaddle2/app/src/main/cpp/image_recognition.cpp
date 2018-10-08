@@ -51,19 +51,13 @@ Java_com_yeyupiaoling_testpaddle_ImageRecognition_infer(JNIEnv *env,
                                                         size_t width_,
                                                         size_t channel_) {
 
-    //网络的输入和输出被组织为paddle_arguments对象
-    //在C-API中。在下面的评论中，“argument”具体指的是一个输入
-    //PaddlePaddle C-API中的神经网络。
+    //创建一个输入参数
     paddle_arguments in_args = paddle_arguments_create_none();
 
-    //调用函数来创建一个参数。
+    //修改输入参数大小
     CHECK(paddle_arguments_resize(in_args, 1));
 
-    //每个参数需要一个矩阵或一个ivector（整数向量，稀疏
-    //索引输入，通常用于NLP任务）来保存真实的输入数据。
-    //在下面的评论中，“matrix”具体指的是需要的对象
-    //参数来保存数据。这里我们为上面创建的矩阵创建
-    //储存测试样品的存量。
+    //创建一个存放预测数据的矩阵
     paddle_matrix mat = paddle_matrix_create(1, 3072, false);
 
     paddle_real *array;
